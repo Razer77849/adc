@@ -1,0 +1,102 @@
+i
+mport java.util.*;
+
+public class AssignmentSolutions {
+       Problem 1:
+    public static int findMin(int[] arr) {
+        int min = arr[0];
+        for (int num : arr) {
+            if (num < min) min = num;
+        }
+        return min;
+    }
+
+    0Problem 2: 
+    public static double findAvg(int[] arr) {
+        double sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        return sum / arr.length;
+    }
+
+       Problem 3:
+    public static boolean isPrime(int n, int d) {
+        if (n < 2) return false;
+        if (d * d > n) return true;
+        if (n % d == 0) return false;
+        return isPrime(n, d + 1);
+    }
+
+       Problem 4:
+    public static int factorial(int n) {
+        return (n == 0) ? 1 : n * factorial(n - 1);
+    }
+
+      Problem 5:
+    public static int fibonacci(int n) {
+        return (n <= 1) ? n : fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+       Problem 6: 
+    public static int power(int a, int n) {
+        return (n == 0) ? 1 : a * power(a, n - 1);
+    }
+
+       Problem 7: 
+    public static void stringPermutations(String str, String prefix) {
+        if (str.length() == 0) {
+            System.out.println(prefix);
+            return;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            stringPermutations(str.substring(0, i) + str.substring(i + 1), prefix + str.charAt(i));
+        }
+    }
+
+    public static void generatePermutations(String str) {
+        stringPermutations(str, "");
+    }
+
+     Problem 8: 
+    public static boolean isNumeric(String s) {
+        return s.matches("\\d+");
+    }
+
+     Problem 9: 
+    public static int binomialCoeff(int n, int k) {
+        if (k == 0 || k == n) return 1;
+        return binomialCoeff(n - 1, k - 1) + binomialCoeff(n - 1, k);
+    }
+
+     Problem 10: 
+    public static int gcd(int a, int b) {
+        return (b == 0) ? a : gcd(b, a % b);
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {10, 1, 32, 3, 45};
+        System.out.println(findMin(arr1));
+
+        int[] arr2 = {3, 2, 4, 1};
+        System.out.println(findAvg(arr2));
+
+        System.out.println(isPrime(7, 2));
+        System.out.println(isPrime(10, 2));
+
+        System.out.println(factorial(5));
+        System.out.println(fibonacci(5));
+        System.out.println(power(2, 10));
+
+        generatePermutations("IOX");
+
+        System.out.println(isNumeric("123456"));
+        System.out.println(isNumeric("123a12"));
+
+        System.out.println(binomialCoeff(2, 1));
+        System.out.println(binomialCoeff(7, 3));
+
+        System.out.println(gcd(32, 48));
+        System.out.println(gcd(10, 7));
+    }
+}
